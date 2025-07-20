@@ -32,7 +32,7 @@
     <br>
     <p>Already have an account? <a href="#">Sign in</a>.</p>
   </div>
-   <h2>made changes as per the requirement</h2>
+   <h2>made changes as per the requirement to automate the build</h2>
    <h1> Thankyou, Happy Learning </h1>
 
   

@@ -34,6 +34,7 @@
   </div>
   <br>
    <h2>made changes as per the requirement to automate the build and deploy the application into tomcat</h2>
+   <h2>***** Jenkins will build the code and create a docker container</h2>
    <h1> Thankyou, Happy Learning </h1>
 
   

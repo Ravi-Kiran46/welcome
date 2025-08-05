@@ -36,7 +36,7 @@
    <h2>made changes as per the requirement to automate the build and deploy the application into tomcat</h2>
    <h2>***** Jenkins will build the code and automatically it create a docker container</h2>
    <br>
-   <h2>Jenkins will build the code and it will create a new war file and this war file should copy into ansible server and it should create an image and that image should get update onto dockerHub - </h2>
+   <h2>Jenkins will build the code and it will create a new war file and this war file should copy into ansible server and it should create an image and that image should get update onto dockerHub - automatically </h2>
    <h1> Thankyou, Happy Learning </h1>
 
   

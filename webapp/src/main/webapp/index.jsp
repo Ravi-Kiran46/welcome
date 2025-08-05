@@ -7,6 +7,7 @@
     font-family: Arial, sans-serif;
     margin: 20px 0;
     border-radius: 5px;
+    white-space: pre-line; /* preserves line breaks */
   }
 </style>
 <form action="action_page.php">

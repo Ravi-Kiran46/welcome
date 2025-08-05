@@ -39,7 +39,58 @@
    <br>
    <h2>Jenkins will build the code and it will create a new war file and this war file should copy into ansible server and it should create an image and that image should get update onto dockerHub - automatically </h2>
    <h2>we are trying to copy artifacts from Jenkins to the Ansible server, then we should select the Ansible server in the "Send build artifacts over SSH" section — not the Docker host.
-   <h1> Thankyou, Happy Learning </h1>
+ 
+
+   <h2>complete flow - what's happening by doing this</h2>
+   <br>
+   <br>
+   <h2>Jenkins Workflow (CI-CD)
+
+1->Code Checkout
+   Jenkins pulls the latest source code from GitHub
+
+2->Build WAR using Maven
+   Jenkins runs mvn clean package.
+   This compiles the code and generates a .war file
+
+3->Jenkins uses a plugin for Post-Build Action 
+   Plugin: "Send build artifacts over SSH"
+   here
+   in Exec command, we are giving these cmds
+   ansible-playbook /opt/docker-folder/catdotcom.yml;
+   sleep 10;
+   ansible-playbook /opt/docker-folder/deploy_catdotcom.yml
+ 
+Next 
+On Ansible Server
+
+catdotcom.yml
+
+FROM tomcat:latest
+RUN cp -R /usr/local/tomcat/webapps.dist/* /usr/local/tomcat/webapps
+COPY ./*.war /usr/local/tomcat/webapps
+-----------------------------------------------------------------------
+🔹 FROM tomcat:latest
+-->This tells Docker to use the official Tomcat image (latest version) as the base image.
+-->Tomcat is a web server that runs Java .war applications.
+
+🔹 RUN cp -R /usr/local/tomcat/webapps.dist/* /usr/local/tomcat/webapps
+-->This copies the default webapps (like the manager, host-manager, etc.) from the backup directory (webapps.dist) into the live directory (webapps).
+-->Sometimes, the Tomcat base image clears the webapps folder, so this command restores the default apps unless you are replacing them.
+
+🔹 COPY ./*.war /usr/local/tomcat/webapps
+-->This copies your .war file (like catdotcom.war) from your local directory (build context) into Tomcat’s deployment directory inside the image.
+-->Tomcat auto-deploys .war files placed in /usr/local/tomcat/webapps.
+
+
+✅ What Happens When You Run This Dockerfile?
+	-->A new Docker image is created based on Tomcat.
+	-->Your .war file is packaged into the image.
+	-->When you run a container from this image, Tomcat will start and automatically deploy your app.
+
+</h2>
+
+	   <h1> Thankyou, Happy Learning </h1>
 
   
 </form>

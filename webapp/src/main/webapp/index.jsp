@@ -37,6 +37,7 @@
    <h2>***** Jenkins will build the code and automatically it create a docker container</h2>
    <br>
    <h2>Jenkins will build the code and it will create a new war file and this war file should copy into ansible server and it should create an image and that image should get update onto dockerHub - automatically </h2>
+   <h2>we are trying to copy artifacts from Jenkins to the Ansible server, then we should select the Ansible server in the "Send build artifacts over SSH" section — not the Docker host.
    <h1> Thankyou, Happy Learning </h1>
 
   

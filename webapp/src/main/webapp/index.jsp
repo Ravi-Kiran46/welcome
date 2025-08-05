@@ -1,3 +1,14 @@
+<style>
+  h2 {
+    color: #0c4b33;
+    background-color: #e0f7f1;
+    padding: 12px;
+    border-left: 6px solid #0c4b33;
+    font-family: Arial, sans-serif;
+    margin: 20px 0;
+    border-radius: 5px;
+  }
+</style>
 <form action="action_page.php">
   <div class="container">
     <h1>New user Register for DevOps Learning</h1>

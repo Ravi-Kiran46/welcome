@@ -125,7 +125,7 @@ COPY ./*.war /usr/local/tomcat/webapps
 -->On Ansible Server
   	Builds a new Docker image from the WAR
 	Pushes it to Docker Hub
-	Exec command in Jenkins</h2>
+	Exec command in Jenkins - recent build</h2>
 
 
 

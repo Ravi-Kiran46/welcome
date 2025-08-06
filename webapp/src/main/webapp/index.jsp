@@ -102,6 +102,33 @@ COPY ./*.war /usr/local/tomcat/webapps
 
 </h2>
 
+<h2>Catdotcom-App CI Job Flow
+
+
+
+-->Developer Stage
+  	edit the code
+	Commit and push the changes
+
+
+-->Jenkins CI Stage
+  	Jenkins pulls the latest code from GitHub
+	Runs Maven to compile & package the app
+	Generates a .war file.
+
+-->Post-Build Actions
+  	Plugin: Send build artifacts over SSH
+	Target: Ansible server
+	Exec command in Jenkins:
+	ansible-playbook /opt/docker-folder/create_image_catdotcomapp.yml;
+
+-->On Ansible Server
+  	Builds a new Docker image from the WAR
+	Pushes it to Docker Hub
+	Exec command in Jenkins</h2>
+
+
+
 	   <h1> Thankyou, Happy Learning </h1>
 
   

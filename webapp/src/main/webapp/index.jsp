@@ -101,7 +101,7 @@ COPY ./*.war /usr/local/tomcat/webapps
 	-->When you run a container from this image, Tomcat will start and automatically deploy your app.
 
 </h2>
-
+<br>
 <h2>Catdotcom-App CI Job Flow
 
 
@@ -126,7 +126,7 @@ COPY ./*.war /usr/local/tomcat/webapps
   	Builds a new Docker image from the WAR
 	Pushes it to Docker Hub
 	Exec command in Jenkins - recent build</h2>
-
+<br>
 
 
 	   <h1> Thankyou, Happy Learning </h1>

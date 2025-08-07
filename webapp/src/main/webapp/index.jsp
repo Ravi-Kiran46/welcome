@@ -127,7 +127,7 @@ COPY ./*.war /usr/local/tomcat/webapps
 	Pushes it to Docker Hub
 	Exec command in Jenkins - recent build</h2>
 <br>
-<h2>disabled all the buils except CI build</h2>
+<h2>disabled all the builds and created 1 - CI job</h2>
 
 	   <h1> Thankyou, Happy Learning </h1>
 

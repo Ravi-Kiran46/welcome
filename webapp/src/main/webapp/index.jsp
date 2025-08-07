@@ -127,7 +127,7 @@ COPY ./*.war /usr/local/tomcat/webapps
 	Pushes it to Docker Hub
 	Exec command in Jenkins - recent build</h2>
 <br>
-<h2>disabled all the builds and created a CatDotCom_CI_job - working/fixing the error on this for a stable build </h2>
+<h2>disabled all the builds and created a CatDotCom_CI_job - working/fixing the error permission issue (is not allowed to use Docker.)- added ansadmin to Docker group so that it can run and give us a stable build </h2>
 
 	   <h1> Thankyou, Happy Learning </h1>
 

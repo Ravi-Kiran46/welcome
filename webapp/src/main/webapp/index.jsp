@@ -129,8 +129,14 @@ COPY ./*.war /usr/local/tomcat/webapps
 <br>
 <h2>disabled all the builds and created a CatDotCom_CI_job - working/fixing the error permission issue (is not allowed to use Docker.)- added ansadmin to Docker group so that it can run and give us a stable build </h2>
 <h2>this part is complex - we have to know the complete flow. 08-08-2025 </h2>
-<h2>this is a complete CI-CD flow - </h2>
-	   <h1> Thankyou, Happy Learning </h1>
+<h2>this is a complete CI-CD flow - done on </h2>
+<br>
+<br>
+<br>
+<h1>CI/CD project done! 🎉</h1>
+<h1>The completion of a first CI/CD project is exciting! 
+</h1>
+	   <h1> Thankyou</h1>
 
   
 </form>

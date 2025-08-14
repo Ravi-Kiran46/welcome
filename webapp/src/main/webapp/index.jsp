@@ -11,7 +11,7 @@
   }
 </style>
 <form action="action_page.php">
-  <div class="container">
+ <%-- <div class="container">
     <h1>New user Register for DevOps Learning</h1>
     <p>Please fill in this form to create an account.</p>
     <hr>
@@ -43,7 +43,7 @@
   <div class="container signin">
     <br>
     <p>Already have an account? <a href="#">Sign in</a>.</p>
-  </div>
+  </div> --%>
   <br>
   <h2>Hello !!</h2>
    <h2>made changes as per the requirement to automate the build and deploy the application into tomcat</h2>

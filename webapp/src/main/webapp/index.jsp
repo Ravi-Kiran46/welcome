@@ -80,7 +80,7 @@
   <h2>🛠 Fixed permission issue ("not allowed to use Docker") by adding <code>ansadmin</code> to the Docker group.</h2>
   <h2>This project demonstrates the full CI/CD flow (completed on 08-08-2025).</h2>
 
-  <h1>🎉 CI/CD Project Completed!!</h1>
+  <h1>🎉 CI/CD Project Completed!!!</h1>
  <%-- <h1>First pipeline success is always exciting!</h1> --%>
   <h1>Thank you!</h1>
 </div>

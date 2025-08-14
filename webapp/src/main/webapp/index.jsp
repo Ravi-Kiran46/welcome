@@ -1,142 +1,86 @@
 <style>
-  h2 {
-    color: #0c4b33;
-    background-color: #e0f7f1;
-    padding: 12px;
-    border-left: 6px solid #0c4b33;
+  body {
     font-family: Arial, sans-serif;
-    margin: 20px 0;
+    background-color: #f4f9f8;
+    color: #0c4b33;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1, h2 {
+    background-color: #e0f7f1;
+    padding: 15px;
+    border-left: 6px solid #0c4b33;
     border-radius: 5px;
-    white-space: pre-line; /* preserves line breaks */
+    margin: 20px auto;
+    width: 80%;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    line-height: 1.5;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 28px;
+    color: #085f45;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: auto;
+    padding-bottom: 30px;
   }
 </style>
-<form action="action_page.php">
- <%-- <div class="container">
-    <h1>New user Register for DevOps Learning</h1>
-    <p>Please fill in this form to create an account.</p>
-    <hr>
-     
-    <label for="Name"><b>Enter Your Name</b></label>
-    <input type="text" placeholder="Enter Full Name" name="Name" id="Name" required>
-    <br>
-    
-    <label for="mobile"><b>Enter Your Mobile</b></label>
-    <input type="text" placeholder="Enter moible number" name="mobile" id="mobile" required>
-    <br>
 
-    <label for="email"><b>Enter Your Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" id="email" required>
-    <br>
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
-    <br>
-
-    <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
-    <hr>
-    <br>
-    <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-    <br>
-    <button type="submit" class="registerbtn">Register</button>
-  </div>
-  <div class="container signin">
-    <br>
-    <p>Already have an account? <a href="#">Sign in</a>.</p>
-  </div> --%>
-  <br>
+<div class="container">
   <h2>Hello !!</h2>
-   <h2>made changes as per the requirement to automate the build and deploy the application into tomcat</h2>
-   <h2>***** Jenkins will build the code and automatically it create a docker container</h2>
-   <br>
-   <h2>Jenkins will build the code and it will create a new war file and this war file should copy into ansible server and it should create an image and that image should get update onto dockerHub - automatically </h2>
-   <h2>we are trying to copy artifacts from Jenkins to the Ansible server, then we should select the Ansible server in the "Send build artifacts over SSH" section — not the Docker host.
- 
+  <h2>Made changes as per the requirement to automate the build and deploy the application into Tomcat.</h2>
+  <h2>Jenkins will build the code and automatically create a Docker container.</h2>
+  <h2>Jenkins will build the code, generate a new WAR file, copy it into the Ansible server, create an image, and update it on DockerHub automatically.</h2>
+  <h2>We are copying artifacts from Jenkins to the Ansible server, so in the "Send build artifacts over SSH" section, we must select the Ansible server — not the Docker host.</h2>
 
-   <h2>complete flow - what's happening by doing this</h2>
-   <br>
-   <br>
-   <h2>Jenkins Workflow (CI-CD)
+  <h2>📌 Complete Workflow</h2>
+  <h2>
+    <b>Jenkins Workflow (CI/CD):</b><br><br>
+    1 → Code Checkout — Jenkins pulls the latest source code from GitHub.<br>
+    2 → Build WAR using Maven — Jenkins runs <code>mvn clean package</code> to compile and generate the WAR file.<br>
+    3 → Post-Build Actions — Jenkins uses the "Send build artifacts over SSH" plugin to trigger Ansible playbooks:<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;• <code>ansible-playbook /opt/docker-folder/catdotcom.yml</code><br>
+       &nbsp;&nbsp;&nbsp;&nbsp;• <code>ansible-playbook /opt/docker-folder/deploy_catdotcom.yml</code>
+  </h2>
 
-1->Code Checkout
-   Jenkins pulls the latest source code from GitHub
+  <h2>📌 On Ansible Server (catdotcom.yml):</h2>
+  <h2>
+    FROM tomcat:latest → Use official Tomcat base image.<br>
+    RUN cp -R /usr/local/tomcat/webapps.dist/* /usr/local/tomcat/webapps → Restore default Tomcat apps.<br>
+    COPY ./*.war /usr/local/tomcat/webapps → Deploy WAR into Tomcat.
+  </h2>
 
-2->Build WAR using Maven
-   Jenkins runs mvn clean package.
-   This compiles the code and generates a .war file
+  <h2>✅ What Happens:</h2>
+  <h2>
+    • A new Docker image is built.<br>
+    • WAR file is packaged inside.<br>
+    • Container runs and Tomcat deploys the app automatically.
+  </h2>
 
-3->Jenkins uses a plugin for Post-Build Action 
-   Plugin: "Send build artifacts over SSH"
-   here
-   in Exec command, we are giving these cmds
-   ansible-playbook /opt/docker-folder/catdotcom.yml;
-   sleep 10;
-   ansible-playbook /opt/docker-folder/deploy_catdotcom.yml
- 
-Next 
-On Ansible Server
-
-catdotcom.yml
-
-FROM tomcat:latest
-RUN cp -R /usr/local/tomcat/webapps.dist/* /usr/local/tomcat/webapps
-COPY ./*.war /usr/local/tomcat/webapps
------------------------------------------------------------------------
-🔹 FROM tomcat:latest
--->This tells Docker to use the official Tomcat image (latest version) as the base image.
--->Tomcat is a web server that runs Java .war applications.
-
-🔹 RUN cp -R /usr/local/tomcat/webapps.dist/* /usr/local/tomcat/webapps
--->This copies the default webapps (like the manager, host-manager, etc.) from the backup directory (webapps.dist) into the live directory (webapps).
--->Sometimes, the Tomcat base image clears the webapps folder, so this command restores the default apps unless you are replacing them.
-
-🔹 COPY ./*.war /usr/local/tomcat/webapps
--->This copies your .war file (like catdotcom.war) from your local directory (build context) into Tomcat’s deployment directory inside the image.
--->Tomcat auto-deploys .war files placed in /usr/local/tomcat/webapps.
+  <h2>🚀 Catdotcom-App CI Job Flow:</h2>
+  <h2>
+    • Developer commits code → Jenkins pulls latest code.<br>
+    • Jenkins builds WAR → Sends it to Ansible server.<br>
+    • Ansible builds Docker image → Pushes to Docker Hub.
+  </h2>
+  <br>
+  <br>
+   • Jenkins triggers CD job → Ansible runs Kubernetes deployment playbook.<br>
+   • Playbook connects to Kubernetes master node → Applies updated Deployment & Service YAML.<br>
+   • Kubernetes pulls latest Docker image from Docker Hub → Updates running pods using rolling update.<br>
+   • Application is live with zero downtime. <br>
 
 
-✅ What Happens When You Run This Dockerfile?
-	-->A new Docker image is created based on Tomcat.
-	-->Your .war file is packaged into the image.
-	-->When you run a container from this image, Tomcat will start and automatically deploy your app.
+  <h2>🛠 Fixed permission issue ("not allowed to use Docker") by adding <code>ansadmin</code> to the Docker group.</h2>
+  <h2>This project demonstrates the full CI/CD flow (completed on 08-08-2025).</h2>
 
-</h2>
-<br>
-<h2>Catdotcom-App CI Job Flow
+  <h1>🎉 CI/CD Project Completed!</h1>
+ <%-- <h1>First pipeline success is always exciting!</h1> --%>
+  <h1>Thank you!</h1>
+</div>
 
-
-
--->Developer Stage
-  	edit the code
-	Commit and push the changes
-
-
--->Jenkins CI Stage
-  	Jenkins pulls the latest code from GitHub
-	Runs Maven to compile & package the app
-	Generates a .war file.
-
--->Post-Build Actions
-  	Plugin: Send build artifacts over SSH
-	Target: Ansible server
-	Exec command in Jenkins:
-	ansible-playbook /opt/docker-folder/create_image_catdotcomapp.yml;
-
--->On Ansible Server
-  	Builds a new Docker image from the WAR
-	Pushes it to Docker Hub
-	Exec command in Jenkins - recent build</h2>
-<br>
-<h2>disabled all the builds and created a CatDotCom_CI_job - working/fixing the error permission issue (is not allowed to use Docker.)- added ansadmin to Docker group so that it can run and give us a stable build </h2>
-<h2>this part is complex - we have to know the complete flow. 08-08-2025 </h2>
-<h2>this is a complete CI-CD flow - done on </h2>
-<br>
-<br>
-<br>
-<h1>CI/CD project done! 🎉</h1>
-<h1>The completion of a first CI/CD project is exciting! 
-</h1>
-	   <h1> Thankyou</h1>
-
-  
-</form>

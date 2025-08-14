@@ -70,11 +70,12 @@
   </h2>
   <br>
   <br>
+  <h2>
    • Jenkins triggers CD job → Ansible runs Kubernetes deployment playbook.<br>
    • Playbook connects to Kubernetes master node → Applies updated Deployment & Service YAML.<br>
    • Kubernetes pulls latest Docker image from Docker Hub → Updates running pods using rolling update.<br>
    • Application is live with zero downtime. <br>
-
+  </h2>
 
   <h2>🛠 Fixed permission issue ("not allowed to use Docker") by adding <code>ansadmin</code> to the Docker group.</h2>
   <h2>This project demonstrates the full CI/CD flow (completed on 08-08-2025).</h2>

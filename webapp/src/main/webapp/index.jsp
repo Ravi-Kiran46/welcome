@@ -82,6 +82,6 @@
 
   <h1>🎉 CI/CD Project Completed!!!</h1>
  <%-- <h1>First pipeline success is always exciting!</h1> --%>
-  <h1>Thank you Sharma anna for giving time sunday now and i need your need help!!!</h1>
+  <h1>Thank you Sharma anna for giving time sunday now and i need your need help!!! thanks</h1>
 </div>
 

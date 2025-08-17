@@ -82,6 +82,6 @@
 
   <h1>🎉 CI/CD Project Completed!!!</h1>
  <%-- <h1>First pipeline success is always exciting!</h1> --%>
-  <h1>Thank you!!</h1>
+  <h1>Thank you!!!</h1>
 </div>
 
